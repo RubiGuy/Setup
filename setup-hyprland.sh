@@ -17,21 +17,21 @@ sudo pacman -S --noconfirm \
   network-manager-applet pipewire pipewire-audio \
   pipewire-pulse wireplumber \
   btop fastfetch ranger zsh neovim git curl unzip ripgrep fd \
-  lua-language-server cmake g++ make gcc \
+  lua-language-server cmake base-devel \
   ttf-jetbrains-mono ttf-font-awesome papirus-icon-theme lxappearance \
-  playerctl trash-cli xdg-user-dirs xdg-utils imv gamemode wlogout \
-  plymouth
+  playerctl trash-cli xdg-user-dirs xdg-utils imv gamemode plymouth
 
 # 3. Configura zsh com Oh My Zsh
 echo "Configurando ZSH..."
 chsh -s /bin/zsh
+export RUNZSH=no
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # 4. Aliases no ZSH
 cat << 'EOF' >> ~/.zshrc
 # Aliases pessoais
 alias update="sudo pacman -Syu"
-alias clean="sudo pacman -Rns $(pacman -Qdtq)"
+alias clean="sudo pacman -Rns \\$(pacman -Qdtq)"
 alias ranger="ranger"
 alias n="nvim"
 alias open="xdg-open"
